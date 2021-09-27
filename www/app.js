@@ -5,6 +5,14 @@ const usernameElement = document.querySelector('#username');
 
 async function getUser() {
     // TODO
+    const response = await fetch('/.auth/me');
+    const me = await response.json();
+    console.log(me);
+    const username = me.clientPrincipal ? `
+    <p>Hello ${me.clientPrincipal.userDetails}!</p>
+    `: ``;
+    console.log(username);
+    usernameElement.innerHTML=username;
 }
 
 async function updateTask() {
